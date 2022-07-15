@@ -1,0 +1,2563 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-16">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>paypo</title>
+  <style>
+    @font-face {
+      font-family: freightbigcmp-pro;
+      src: url("https://use.typekit.net/af/7692da/000000000000000077359faf/30/l?primer=e6066692ab328d1a92bb155659ed6609b693e1e352f0e8982e4224719b13bdfb&fvd=n3&v=3");
+      format: "woff2"
+    }
+
+    @font-face {
+      font-family: "Univers LT W05_55 Roman";
+      src: url("https://ccc-frontend.github.io/fonts/fonts/7b452431-e4a6-48a8-8ba1-c6300f9384df.woff2");
+      format: "woff2"
+    }
+
+    @font-face {
+      font-family: UniversLTPro-65Bold;
+      src: url("https://ccc-frontend.github.io/fonts/fonts/Linotype-UniversLTPro-65Bold.woff2");
+      format: "woff2"
+    }
+
+    body {
+      margin: 0
+    }
+
+    .main {
+      max-width: 1920px;
+      margin: 0 auto;
+      background-color: #fcf7f2;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-tap-highlight-color: transparent
+    }
+
+    .main * {
+      padding: 0;
+      margin: 0;
+      font-family: "Univers LT W05_55 Roman"
+    }
+
+    .header {
+      position: relative;
+    }
+
+    .header__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: block;
+      width: 100%;
+      z-index: 1;
+    }
+
+    .header__placeholder {
+      position: relative;
+    }
+
+    .header__placeholder-img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1920/1080;
+    }
+
+    .header__placeholder-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 50px;
+    }
+
+    .header__motto {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -65%);
+      transform: translate(-50%, -65%);
+      width: 100%;
+      max-width: 1300px;
+      padding-left: 180px;
+      color: #fff;
+      z-index: 2;
+
+    }
+
+    .header__title {
+      width: 120px
+    }
+
+    .header__paragraph {
+      font-family: freightbigcmp-pro;
+      font-size: 96px;
+      max-width: 560px;
+      line-height: 87px;
+      margin-bottom: 62px
+    }
+
+    .header__arrow {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-50%);
+      width: 20px;
+      display: none;
+      -webkit-animation: opacity-pulse;
+      animation: opacity-pulse;
+      -webkit-animation-iteration-count: infinite;
+      animation-iteration-count: infinite;
+      -webkit-animation-duration: 2s;
+      animation-duration: 2s;
+      z-index: 10
+    }
+
+    .header__text {
+      font-size: 16px;
+      line-height: 19px;
+      text-align: center
+    }
+
+    .header__popup-link {
+      display: block;
+      border: 1px solid #222;
+      width: 100%;
+      height: 46px;
+      line-height: 46px;
+      margin: 0 auto;
+      margin-top: 15px;
+      font-size: 13px;
+      text-decoration: none;
+      color: #222;
+      text-align: center;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .header__popup-link:hover {
+      background-color: #222;
+      color: #fff
+    }
+
+    .header__link {
+      display: block;
+      width: 196px;
+      height: 48px;
+      color: #fff;
+      font-size: 13px;
+      text-align: center;
+      line-height: 47px;
+      text-decoration: none;
+      background-color: #222;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .header__link:hover {
+      background-color: #000
+    }
+
+    .header__buttons {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 60px;
+      height: 60px;
+      cursor: pointer;
+      z-index: 2;
+    }
+
+    .header__buttons-img {
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%)
+    }
+
+    @-webkit-keyframes opacity-pulse {
+      0% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 1
+      }
+    }
+
+    @keyframes opacity-pulse {
+      0% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 1
+      }
+    }
+
+    .nav {
+      position: relative;
+      background-color: #fcf7f2;
+      border-bottom: 1px solid #b7b4b4;
+      z-index: 2
+    }
+
+    .nav__list {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      height: 100%;
+      list-style: none;
+      height: 104px
+    }
+
+    .nav__item {
+      position: relative;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 228px;
+      height: 100%
+    }
+
+    .nav__bottom-line {
+      position: absolute;
+      height: 3px;
+      background-color: #070000;
+      width: 100%;
+      bottom: -2px;
+      left: 0
+    }
+
+    .nav__item::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background-color: #070000;
+      -webkit-transition: width .4s;
+      transition: width .4s
+    }
+
+    .nav__item:hover::after {
+      width: 100%
+    }
+
+    .nav__img {
+      width: 26px;
+      color: #4e4e4e;
+      margin-right: 15px
+    }
+
+    .nav__text {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: left;
+      font-size: 16px;
+      line-height: 18px
+    }
+
+    .nav__link {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      color: #4e4e4e;
+      text-decoration: none;
+      width: 100%;
+      height: 100%
+    }
+
+    #stationary {
+      width: 100%;
+      background-color: #fcf7f2
+    }
+
+    #electronic,
+    #online,
+    #stationary {
+      position: relative;
+      top: -105px;
+      display: none;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-animation: show-section 1s;
+      animation: show-section 1s;
+      z-index: 1
+    }
+
+    #electronic .cards,
+    #online .cards,
+    #stationary .cards {
+      padding: 224px 0 120px 0;
+      background-color: #fcf7f2;
+      border-bottom: 1px solid #b7b4b4
+    }
+
+    #electronic .cards__wrapper,
+    #online .cards__wrapper,
+    #stationary .cards__wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto
+    }
+
+    #electronic .cards__inner,
+    #online .cards__inner,
+    #stationary .cards__inner {
+      width: 50%;
+      height: 100%
+    }
+
+    #electronic .cards__motto,
+    #online .cards__motto,
+    #stationary .cards__motto {
+      position: relative;
+      left: 100px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      height: 309px
+    }
+
+    #electronic .cards__animation,
+    #online .cards__animation,
+    #stationary .cards__animation {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center
+    }
+
+    #electronic .cards__animation-physical,
+    #online .cards__animation-physical,
+    #stationary .cards__animation-physical {
+      display: block;
+      position: relative;
+      max-height: 450px;
+      left: 0;
+      width: 70%
+    }
+
+    #electronic .cards__title,
+    #online .cards__title,
+    #stationary .cards__title {
+      font-family: UniversLTPro-65Bold;
+      font-size: 34px;
+      font-weight: 700;
+      line-height: 40px;
+      margin-bottom: 27px;
+      color: #222;
+      max-width: 500px
+    }
+
+    #electronic .cards__paragraph,
+    #online .cards__paragraph,
+    #stationary .cards__paragraph {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 28px;
+      margin-bottom: 70px;
+      max-width: 420px
+    }
+
+    #electronic .cards__link,
+    #online .cards__link,
+    #stationary .cards__link {
+      display: block;
+      font-size: 13px;
+      text-decoration: none;
+      color: #fff;
+      height: 48px;
+      width: 188px;
+      text-align: center;
+      line-height: 47px;
+      background-color: #222;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    #electronic .cards__link:hover,
+    #online .cards__link:hover,
+    #stationary .cards__link:hover {
+      background-color: #000
+    }
+
+    #electronic .instructions,
+    #online .instructions,
+    #stationary .instructions {
+      padding: 58px 0;
+      background-color: #fcf7f2
+    }
+
+    #electronic .instructions__wrapper,
+    #online .instructions__wrapper,
+    #stationary .instructions__wrapper {
+      max-width: 1300px;
+      margin: 0 auto
+    }
+
+    #electronic .instructions__title,
+    #online .instructions__title,
+    #stationary .instructions__title {
+      text-align: center;
+      font-size: 78px;
+      line-height: 81px;
+      font-weight: 400;
+      letter-spacing: 0;
+      margin-bottom: 160px;
+      letter-spacing: -3px
+    }
+
+    #electronic .instructions__inner,
+    #online .instructions__inner,
+    #stationary .instructions__inner {
+      font-family: freightbigcmp-pro;
+      font-size: 96px;
+      letter-spacing: 0
+    }
+
+    #electronic .instructions__items,
+    #online .instructions__items,
+    #stationary .instructions__items {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: start;
+      -ms-flex-align: start;
+      align-items: flex-start;
+      text-align: center
+    }
+
+    #electronic .instructions__item,
+    #online .instructions__item,
+    #stationary .instructions__item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 300px
+    }
+
+    #electronic .instructions__img,
+    #online .instructions__img,
+    #stationary .instructions__img {
+      height: 180px
+    }
+
+    #electronic .instructions__paragraph,
+    #online .instructions__paragraph,
+    #stationary .instructions__paragraph {
+      font-size: 20px;
+      margin-top: 30px;
+      line-height: 28px;
+      max-width: 230px
+    }
+
+    #electronic .instructions__link,
+    #online .instructions__link,
+    #stationary .instructions__link {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      border: solid 1px #000;
+      height: 46px;
+      width: 206px;
+      line-height: 46px;
+      font-size: 13px;
+      margin: 35px auto 0 auto;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    #electronic .instructions__link:hover,
+    #online .instructions__link:hover,
+    #stationary .instructions__link:hover {
+      color: #fff;
+      background-color: #000
+    }
+
+    #electronic .points.padding-smaller,
+    #online .points.padding-smaller,
+    #stationary .points.padding-smaller {
+      padding: 110px 29px 50px 29px
+    }
+
+    #electronic .points,
+    #online .points,
+    #stationary .points {
+      -webkit-box-ordinal-group: 6;
+      -ms-flex-order: 5;
+      order: 5;
+      padding: 110px 0;
+      background-color: #fcf7f2
+    }
+
+    #electronic .points__wrapper,
+    #online .points__wrapper,
+    #stationary .points__wrapper {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto
+    }
+
+    #electronic .points__inner,
+    #online .points__inner,
+    #stationary .points__inner {
+      width: 50%
+    }
+
+    #electronic .points__video,
+    #online .points__video,
+    #stationary .points__video {
+      width: 100%
+    }
+
+    #electronic .points__img,
+    #online .points__img,
+    #stationary .points__img {
+      width: 100%
+    }
+
+    #electronic .points__title,
+    #online .points__title,
+    #stationary .points__title {
+      font-family: UniversLTPro-65Bold;
+      font-size: 34px;
+      margin-bottom: 40px;
+      max-width: 420px
+    }
+
+    #electronic .points__title.howto,
+    #online .points__title.howto,
+    #stationary .points__title.howto {
+      margin-bottom: 27px
+    }
+
+    #electronic .points__title2,
+    #online .points__title2,
+    #stationary .points__title2 {
+      margin-bottom: 37px;
+      max-width: 400px
+    }
+
+    #electronic .points__list,
+    #online .points__list,
+    #stationary .points__list {
+      margin-left: 100px;
+      list-style: none
+    }
+
+    #electronic .points__item,
+    #online .points__item,
+    #stationary .points__item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: start;
+      -ms-flex-pack: start;
+      justify-content: flex-start;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      margin-bottom: 20px
+    }
+
+    #electronic .points__tick,
+    #online .points__tick,
+    #stationary .points__tick {
+      width: 35px
+    }
+
+    #electronic .points__text,
+    #online .points__text,
+    #stationary .points__text {
+      font-size: 20px;
+      font-weight: 400;
+      margin-left: 20px;
+      line-height: 28px
+    }
+
+    #electronic .points__link,
+    #online .points__link,
+    #stationary .points__link {
+      display: block;
+      margin: 50px 0 0 100px;
+      font-size: 13px;
+      background-color: #222;
+      height: 48px;
+      width: 196px;
+      line-height: 47px;
+      text-align: center;
+      text-decoration: none;
+      color: #fff;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    #electronic .points__link:hover,
+    #online .points__link:hover,
+    #stationary .points__link:hover {
+      background-color: #000
+    }
+
+    #electronic .slider,
+    #online .slider,
+    #stationary .slider {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+      padding: 120px 0;
+      overflow-x: scroll;
+      background-color: #fcf7f2
+    }
+
+    #electronic .reminder,
+    #online .reminder,
+    #stationary .reminder {
+      text-align: center;
+      padding: 116px 50px;
+      font-size: 82px;
+      line-height: 85px;
+      letter-spacing: -3px
+    }
+
+    #electronic .reminder__text.inner,
+    #online .reminder__text.inner,
+    #stationary .reminder__text.inner {
+      font-family: freightbigcmp-pro;
+      font-size: 96px;
+      letter-spacing: 0
+    }
+
+    #electronic .faq,
+    #online .faq,
+    #stationary .faq {
+      padding: 110px 35px;
+      background-color: #fcf7f2;
+      font-size: 20px;
+      line-height: 28px
+    }
+
+    #electronic .faq__title,
+    #online .faq__title,
+    #stationary .faq__title {
+      font-family: freightbigcmp-pro;
+      font-size: 96px;
+      text-align: center;
+      margin-bottom: 160px
+    }
+
+    #electronic .faq__question,
+    #online .faq__question,
+    #stationary .faq__question {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      border-top: 1px solid #000;
+      padding: 34px 150px;
+      cursor: pointer
+    }
+
+    #electronic .faq__question:last-of-type,
+    #online .faq__question:last-of-type,
+    #stationary .faq__question:last-of-type {
+      border-bottom: 1px solid #000
+    }
+
+    #electronic .faq__paragraph,
+    #online .faq__paragraph,
+    #stationary .faq__paragraph {
+      width: calc(100% - 46px - 35px)
+    }
+
+    #electronic .faq__btn,
+    #online .faq__btn,
+    #stationary .faq__btn {
+      position: relative;
+      width: 46px;
+      height: 46px;
+      margin-left: 35px;
+      background-color: #222
+    }
+
+    #electronic .faq__btn-line,
+    #online .faq__btn-line,
+    #stationary .faq__btn-line {
+      position: absolute;
+      background-color: #fff;
+      width: 24px;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%)
+    }
+
+    #electronic .faq__btn-line.vertical,
+    #online .faq__btn-line.vertical,
+    #stationary .faq__btn-line.vertical {
+      -webkit-transform: translate(-50%, -50%) rotate(90deg);
+      transform: translate(-50%, -50%) rotate(90deg);
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    #electronic .faq__btn-line.vertical.open,
+    #online .faq__btn-line.vertical.open,
+    #stationary .faq__btn-line.vertical.open {
+      -webkit-transform: translate(-50%, -50%) rotate(0);
+      transform: translate(-50%, -50%) rotate(0)
+    }
+
+    #electronic .faq__answer,
+    #online .faq__answer,
+    #stationary .faq__answer {
+      padding: 34px 130px 34px 0;
+      width: 100%;
+      display: none
+    }
+
+    #electronic .faq__answer.visible,
+    #online .faq__answer.visible,
+    #stationary .faq__answer.visible {
+      display: block;
+      -webkit-animation: show-section 1s;
+      animation: show-section 1s
+    }
+
+    #electronic .faq__link,
+    #online .faq__link,
+    #stationary .faq__link {
+      font-size: inherit;
+      color: inherit;
+      font-family: inherit;
+      text-decoration: underline
+    }
+
+    .footer {
+      position: relative;
+      padding: 0 0 60px 0;
+      background-color: #fff;
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto
+    }
+
+    .footer__title {
+      font-family: "Univers LT W05_55 Roman";
+      font-size: 76px;
+      line-height: 76px;
+      font-weight: 400;
+      text-align: center;
+      padding-top: 40px;
+      margin-bottom: 200px;
+      letter-spacing: -3px
+    }
+
+    .footer__container {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+      flex-direction: row;
+      -ms-flex-pack: distribute;
+      justify-content: space-around;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      text-align: center
+    }
+
+    .footer__inner {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      width: 350px;
+      height: 240px
+    }
+
+    .footer__text1 {
+      font-family: UniversLTPro-65Bold;
+      font-size: 34px;
+      line-height: 40px;
+      margin-bottom: 15px
+    }
+
+    .footer__text2 {
+      font-size: 20px;
+      line-height: 28px;
+      font-weight: 400;
+      margin-bottom: 35px
+    }
+
+    .footer__link {
+      display: block;
+      text-align: center;
+      width: 178px;
+      height: 48px;
+      line-height: 47px;
+      background-color: #222;
+      text-decoration: none;
+      margin: 0 auto;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .footer__link:hover {
+      background-color: #000
+    }
+
+    .footer__link.white {
+      height: 46px;
+      line-height: 46px;
+      background-color: #fff;
+      border: 1px solid #222;
+      color: #000;
+      -webkit-transition: .3s;
+      transition: .3s
+    }
+
+    .footer__link.white:hover {
+      background-color: #000;
+      color: #fff
+    }
+
+    .footer__white-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -104px;
+      height: 104px;
+      background-color: #fff
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto
+    }
+
+    .wrap-footer {
+      background-color: #fff
+    }
+
+    #online:target {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+
+    #stationary:target {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+
+    @-webkit-keyframes show-section {
+      0% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 1
+      }
+    }
+
+    @keyframes show-section {
+      0% {
+        opacity: 0
+      }
+
+      100% {
+        opacity: 1
+      }
+    }
+
+    @media (max-width:1300px) {
+      .main .header__motto {
+        left: 0;
+        padding-left: 80px;
+        -webkit-transform: translate(0, -65%);
+        transform: translate(0, -65%)
+      }
+
+      .main #electronic .cards,
+      .main #online .cards,
+      .main #stationary .cards {
+        padding: 224px 80px 120px 80px
+      }
+
+      .main #electronic .cards__motto,
+      .main #online .cards__motto,
+      .main #stationary .cards__motto {
+        left: 0
+      }
+
+      .main #electronic .instructions,
+      .main #online .instructions,
+      .main #stationary .instructions {
+        padding: 58px 80px
+      }
+
+      .main #electronic .points,
+      .main #online .points,
+      .main #stationary .points {
+        padding: 110px 80px
+      }
+    }
+
+    @media (max-width:1150px) {
+
+      .main #electronic .instructions .instructions__img,
+      .main #online .instructions .instructions__img,
+      .main #stationary .instructions .instructions__img {
+        height: 140px
+      }
+    }
+
+    @media (max-width:1024px) {
+      .main .header__paragraph {
+        font-size: 84px;
+        line-height: 80px
+      }
+
+      .main .nav {
+        padding: 0 80px
+      }
+
+      .main .nav__list {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+      }
+
+      .main #electronic .instructions,
+      .main #online .instructions,
+      .main #stationary .instructions {
+        padding: 58px 80px
+      }
+
+      .main #electronic .instructions__items,
+      .main #online .instructions__items,
+      .main #stationary .instructions__items {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        gap: 80px
+      }
+
+      .main #electronic .instructions__title,
+      .main #online .instructions__title,
+      .main #stationary .instructions__title {
+        font-size: 65px
+      }
+
+      .main #electronic .instructions__inner,
+      .main #online .instructions__inner,
+      .main #stationary .instructions__inner {
+        font-size: 84px
+      }
+
+      .main #electronic .reminder,
+      .main #online .reminder,
+      .main #stationary .reminder {
+        font-size: 65px;
+        line-height: 66px
+      }
+
+      .main #electronic .reminder__text.inner,
+      .main #online .reminder__text.inner,
+      .main #stationary .reminder__text.inner {
+        font-size: 84px
+      }
+
+      .main #electronic .faq__question,
+      .main #online .faq__question,
+      .main #stationary .faq__question {
+        padding: 34px 70px
+      }
+
+      .main #electronic .faq__title,
+      .main #online .faq__title,
+      .main #stationary .faq__title {
+        font-size: 84px
+      }
+
+      .main #electronic .points__list,
+      .main #online .points__list,
+      .main #stationary .points__list {
+        margin-left: 70px
+      }
+
+      .main #electronic .points__link,
+      .main #online .points__link,
+      .main #stationary .points__link {
+        margin: 50px 0 0 70px
+      }
+
+      .main .footer__title {
+        font-size: 64px;
+        margin-bottom: 160px
+      }
+
+      .main .scroll-carousel-with-arrows__container {
+        width: 3290px
+      }
+
+      .main .scroll-carousel-with-arrows__item {
+        height: 360px
+      }
+
+      .main .scroll-carousel-with-arrows__item.smallerimg {
+        height: 360px
+      }
+    }
+
+    @media (max-width:900px) {
+      .main .nav {
+        padding: 0 40px
+      }
+
+      .main .header__motto {
+        padding-left: 40px;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%)
+      }
+
+      .main #electronic .cards,
+      .main #online .cards,
+      .main #stationary .cards {
+        padding: 164px 40px 60px 40px
+      }
+
+      .main #electronic .cards__title,
+      .main #online .cards__title,
+      .main #stationary .cards__title {
+        font-size: 22px;
+        line-height: 30px
+      }
+
+      .main #electronic .cards__paragraph,
+      .main #online .cards__paragraph,
+      .main #stationary .cards__paragraph {
+        font-size: 17px;
+        line-height: 26px;
+        margin-bottom: 60px
+      }
+
+      .main #electronic .cards__motto,
+      .main #online .cards__motto,
+      .main #stationary .cards__motto {
+        height: 300px
+      }
+
+      .main #electronic .instructions,
+      .main #online .instructions,
+      .main #stationary .instructions {
+        padding: 58px 40px
+      }
+
+      .main #electronic .instructions__paragraph,
+      .main #online .instructions__paragraph,
+      .main #stationary .instructions__paragraph {
+        font-size: 17px;
+        line-height: 26px
+      }
+
+      .main #electronic .faq__question,
+      .main #online .faq__question,
+      .main #stationary .faq__question {
+        padding: 34px 40px;
+        font-size: 17px;
+        line-height: 26px
+      }
+
+      .main #electronic .faq__answer,
+      .main #online .faq__answer,
+      .main #stationary .faq__answer {
+        font-size: 17px;
+        line-height: 26px
+      }
+
+      .main #electronic .points,
+      .main #online .points,
+      .main #stationary .points {
+        padding: 110px 40px
+      }
+
+      .main #electronic .points__title,
+      .main #online .points__title,
+      .main #stationary .points__title {
+        font-size: 22px;
+        line-height: 30px
+      }
+
+      .main #electronic .points__text,
+      .main #online .points__text,
+      .main #stationary .points__text {
+        font-size: 17px;
+        line-height: 26px
+      }
+
+      .main #electronic .points__tick,
+      .main #online .points__tick,
+      .main #stationary .points__tick {
+        width: 25px;
+        height: 25p
+      }
+
+      .main #electronic .points__list,
+      .main #online .points__list,
+      .main #stationary .points__list {
+        margin-left: 50px
+      }
+
+      .main #electronic .points__link,
+      .main #online .points__link,
+      .main #stationary .points__link {
+        margin: 60px 0 0 50px
+      }
+
+      .main .footer__inner {
+        height: 210px
+      }
+
+      .main .footer__text1 {
+        font-size: 22px;
+        line-height: 30px
+      }
+
+      .main .footer__text2 {
+        font-size: 17px;
+        line-height: 26px
+      }
+
+      .main .scroll-carousel-with-arrows__container {
+        width: 2540px
+      }
+
+      .main .scroll-carousel-with-arrows__item {
+        height: 277px
+      }
+
+      .main .scroll-carousel-with-arrows__item.smallerimg {
+        height: 277px
+      }
+    }
+
+    @media (max-width:764px) {
+      .main .header__motto {
+        top: 75%
+      }
+
+      .main .header__placeholder-img {
+        aspect-ratio: 764/1358;
+      }
+
+      .main .header__placeholder-placeholder {
+        width: 50px;
+      }
+
+
+
+      .main .header__arrow {
+        display: block
+      }
+
+      .main .nav__list {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+      }
+
+      .main .nav__item:last-child {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex
+      }
+
+      .main #electronic .reminder,
+      .main #online .reminder,
+      .main #stationary .reminder {
+        font-size: 45px;
+        line-height: 46px;
+        padding: 80px 50px
+      }
+
+      .main #electronic .reminder__text.inner,
+      .main #online .reminder__text.inner,
+      .main #stationary .reminder__text.inner {
+        font-size: 60px
+      }
+
+      .main #electronic .instructions,
+      .main #online .instructions,
+      .main #stationary .instructions {
+        padding: 58px 40px
+      }
+
+      .main #electronic .instructions__title,
+      .main #online .instructions__title,
+      .main #stationary .instructions__title {
+        font-size: 45px;
+        line-height: 60px;
+        margin-bottom: 100px
+      }
+
+      .main #electronic .instructions__inner,
+      .main #online .instructions__inner,
+      .main #stationary .instructions__inner {
+        font-size: 60px
+      }
+
+      .main #electronic .instructions__items,
+      .main #online .instructions__items,
+      .main #stationary .instructions__items {
+        gap: 75px
+      }
+
+      .main #electronic .faq,
+      .main #online .faq,
+      .main #stationary .faq {
+        padding: 73px 0
+      }
+
+      .main #electronic .faq__title,
+      .main #online .faq__title,
+      .main #stationary .faq__title {
+        font-size: 60px;
+        margin-bottom: 73px
+      }
+
+      .main #electronic .faq__question,
+      .main #online .faq__question,
+      .main #stationary .faq__question {
+        padding: 34px 34px
+      }
+
+      .main #electronic .faq__paragraph,
+      .main #online .faq__paragraph,
+      .main #stationary .faq__paragraph {
+        font-size: 17px
+      }
+
+      .main #electronic .faq__answer,
+      .main #online .faq__answer,
+      .main #stationary .faq__answer {
+        font-size: 17px
+      }
+
+      .main #electronic .points.padding-smaller,
+      .main #online .points.padding-smaller,
+      .main #stationary .points.padding-smaller {
+        padding: 60px 0 0 0
+      }
+
+      .main .footer__title {
+        font-size: 55px;
+        margin-bottom: 100px
+      }
+
+      .main .scroll-carousel-with-arrows {
+        padding-bottom: 0
+      }
+    }
+
+    @media (max-width:650px) {
+      .main .header__motto {
+        width: calc(100% - 30px);
+        padding: 0 15px;
+        top: 75%
+      }
+
+      .main .header__paragraph {
+        font-size: 46px;
+        line-height: 46px;
+        max-width: none
+      }
+
+      .main .header__link {
+        width: 100%
+      }
+
+      .main .nav {
+        padding: 0 15px 0 15px;
+        overflow-y: hidden;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;
+        scrollbar-width: none
+      }
+
+      .main .nav::-webkit-scrollbar {
+        display: none
+      }
+
+      .main .nav__list {
+        width: 100%;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between
+      }
+
+      .main .nav__item {
+        width: 42%;
+        text-align: center;
+        height: 100%
+      }
+
+      .main .nav__text:first-child {
+        padding-right: 16px
+      }
+
+      .main .nav__img {
+        width: 23px
+      }
+
+      .main .nav__bottom-line {
+        bottom: 0
+      }
+
+      .main #electronic,
+      .main #online,
+      .main #stationary {
+        top: -104px
+      }
+
+      .main #electronic .cards,
+      .main #online .cards,
+      .main #stationary .cards {
+        padding: 200px 15px 60px 15px;
+        border-bottom: none
+      }
+
+      .main #electronic .cards__wrapper,
+      .main #online .cards__wrapper,
+      .main #stationary .cards__wrapper {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap
+      }
+
+      .main #electronic .cards__inner,
+      .main #online .cards__inner,
+      .main #stationary .cards__inner {
+        width: 100%
+      }
+
+      .main #electronic .cards__inner:first-child,
+      .main #online .cards__inner:first-child,
+      .main #stationary .cards__inner:first-child {
+        -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+        order: 1;
+        margin-top: 35px
+      }
+
+      .main #electronic .cards__animation-physical,
+      .main #online .cards__animation-physical,
+      .main #stationary .cards__animation-physical {
+        bottom: 15px;
+        width: 70%;
+        left: 0
+      }
+
+      .main #electronic .cards__motto,
+      .main #online .cards__motto,
+      .main #stationary .cards__motto {
+        height: auto
+      }
+
+      .main #electronic .cards__title,
+      .main #online .cards__title,
+      .main #stationary .cards__title {
+        font-size: 22px;
+        width: 100%;
+        max-width: none;
+        text-align: left;
+        line-height: 30px
+      }
+
+      .main #electronic .cards__paragraph,
+      .main #online .cards__paragraph,
+      .main #stationary .cards__paragraph {
+        font-size: 17px;
+        line-height: 26px;
+        margin-bottom: 40px
+      }
+
+      .main #electronic .cards__link,
+      .main #online .cards__link,
+      .main #stationary .cards__link {
+        width: 100%
+      }
+
+      .main #electronic .reminder,
+      .main #online .reminder,
+      .main #stationary .reminder {
+        padding: 60px 15px;
+        font-size: 40px;
+        line-height: 40px
+      }
+
+      .main #electronic .reminder__text.inner,
+      .main #online .reminder__text.inner,
+      .main #stationary .reminder__text.inner {
+        font-size: 50px
+      }
+
+      .main #electronic .instructions,
+      .main #online .instructions,
+      .main #stationary .instructions {
+        padding: 10px 15px
+      }
+
+      .main #electronic .instructions__title,
+      .main #online .instructions__title,
+      .main #stationary .instructions__title {
+        font-size: 40px;
+        line-height: 40px
+      }
+
+      .main #electronic .instructions__inner,
+      .main #online .instructions__inner,
+      .main #stationary .instructions__inner {
+        font-size: 50px
+      }
+
+      .main #electronic .instructions__paragraph,
+      .main #online .instructions__paragraph,
+      .main #stationary .instructions__paragraph {
+        font-size: 17px;
+        line-height: 26px;
+        max-width: 280px
+      }
+
+      .main #electronic .instructions__img,
+      .main #online .instructions__img,
+      .main #stationary .instructions__img {
+        height: 170px
+      }
+
+      .main #electronic .points.moved-padding,
+      .main #online .points.moved-padding,
+      .main #stationary .points.moved-padding {
+        padding: 276px 0 60px 0
+      }
+
+      .main #electronic .points,
+      .main #online .points,
+      .main #stationary .points {
+        padding: 60px 0 0 0
+      }
+
+      .main #electronic .points__wrapper,
+      .main #online .points__wrapper,
+      .main #stationary .points__wrapper {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap
+      }
+
+      .main #electronic .points__title,
+      .main #online .points__title,
+      .main #stationary .points__title {
+        max-width: 280px
+      }
+
+      .main #electronic .points__inner,
+      .main #online .points__inner,
+      .main #stationary .points__inner {
+        width: 100%
+      }
+
+      .main #electronic .points__inner:last-child,
+      .main #online .points__inner:last-child,
+      .main #stationary .points__inner:last-child {
+        padding: 50px 15px 0 15px
+      }
+
+      .main #electronic .points__list,
+      .main #online .points__list,
+      .main #stationary .points__list {
+        margin-left: 0
+      }
+
+      .main #electronic .points__link,
+      .main #online .points__link,
+      .main #stationary .points__link {
+        width: 100%;
+        margin-top: 40px;
+        margin-left: 0
+      }
+
+      .main #electronic .faq__title,
+      .main #online .faq__title,
+      .main #stationary .faq__title {
+        font-size: 50px
+      }
+
+      .main #electronic .faq__answer,
+      .main #online .faq__answer,
+      .main #stationary .faq__answer {
+        padding: 34px 0 34px 0
+      }
+
+      .main .footer__title {
+        font-size: 40px;
+        letter-spacing: -2px;
+        margin-bottom: 60px
+      }
+
+      .main .footer__container {
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap
+      }
+
+      .main .footer__inner {
+        width: 100%;
+        margin-bottom: 60px
+      }
+
+      .main .footer__inner:last-child {
+        height: 180px
+      }
+
+      .main .footer__text1 {
+        font-size: 22px;
+        margin-bottom: 5px
+      }
+
+      .main .footer__text2 {
+        font-size: 17px
+      }
+
+      .main .footer__wrap {
+        width: 100%
+      }
+
+      .main .footer__link {
+        width: calc(100% - 30px)
+      }
+
+      .main .scroll-carousel-with-arrows__container {
+        width: 1540px
+      }
+
+      .main .scroll-carousel-with-arrows__item {
+        height: 166px
+      }
+
+      .main .scroll-carousel-with-arrows__item.smallerimg {
+        height: 166px
+      }
+
+      .main .scroll-carousel-with-arrows .arrows {
+        display: none
+      }
+    }
+
+    .scroll-carousel-with-arrows {
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end;
+      -webkit-box-ordinal-group: 7;
+      -ms-flex-order: 6;
+      order: 6;
+      width: 100%;
+      background-color: #fcf7f2
+    }
+
+    .scroll-carousel-with-arrows__wrapper {
+      width: 100%;
+      overflow-y: hidden;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -ms-overflow-style: none;
+      scrollbar-width: none
+    }
+
+    .scroll-carousel-with-arrows__wrapper::-webkit-scrollbar {
+      display: none
+    }
+
+    .scroll-carousel-with-arrows__container {
+      width: 4316px;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      scroll-behavior: smooth
+    }
+
+    .scroll-carousel-with-arrows__item {
+      width: 873px;
+      height: 582px;
+      padding: 0 0 0 10px;
+      text-align: center
+    }
+
+    .scroll-carousel-with-arrows__item.smallerimg {
+      width: 387px;
+      height: 582px
+    }
+
+    .scroll-carousel-with-arrows__item:first-child {
+      padding: 0
+    }
+
+    .scroll-carousel-with-arrows__image {
+      width: 100%;
+      display: block;
+      cursor: default
+    }
+
+    .scroll-carousel-with-arrows__link {
+      display: inline-block;
+      color: #000;
+      padding: 10px 40px;
+      font-size: 12px;
+      border-radius: 0;
+      text-transform: uppercase;
+      font-family: "Univers LT W05_55 Roman", sans-serif;
+      text-decoration: none;
+      margin: 30px 0 0;
+      border: 1px solid #000;
+      -webkit-transition: .2s;
+      transition: .2s
+    }
+
+    .scroll-carousel-with-arrows__link:hover {
+      color: #fff;
+      background-color: #000
+    }
+
+    #physical:target .scroll-carousel-with-arrows {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex
+    }
+
+    .arrows {
+      -ms-flex-item-align: end;
+      align-self: flex-end;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: end;
+      -ms-flex-pack: end;
+      justify-content: flex-end;
+      padding-right: 15px
+    }
+
+    @media (max-width:1100px) {
+      .arrows {
+        padding: 0 15px
+      }
+    }
+
+    .arrows__arrow {
+      width: 28px;
+      margin: 0 2px 15px 15px
+    }
+
+    .info {
+      background-color: #fcf7f2;
+      padding: 200px 80px
+    }
+
+    .info__inner {
+      max-width: 1300px;
+      margin: 0 auto
+    }
+
+    .info__title {
+      position: relative;
+      font-family: freightbigcmp-pro;
+      font-size: 96px;
+      line-height: 90%;
+      font-weight: 400;
+      text-align: center;
+      letter-spacing: 0;
+      z-index: 2
+    }
+
+    .info__inner {
+      position: relative;
+      font-family: "Univers LT W05_55 Roman";
+      font-size: 76px;
+      line-height: 100%;
+      letter-spacing: -4px
+    }
+
+    .info__text {
+      position: relative;
+      font-family: "Univers LT W05_55 Roman";
+      font-size: 20px;
+      margin-top: 10px;
+      line-height: 28px;
+      max-width: 650px;
+      text-align: center;
+      margin: 70px auto 0 auto;
+      z-index: 2;
+      letter-spacing: 0
+    }
+
+    .info__circle {
+      display: block;
+      position: absolute;
+      top: -61px;
+      left: -52px;
+      width: 283px;
+      z-index: -1;
+      -webkit-animation: circle-rotation, circle-move;
+      animation: circle-rotation, circle-move;
+      -webkit-animation-duration: 10s, 5s;
+      animation-duration: 10s, 5s;
+      -webkit-animation-timing-function: linear, linear;
+      animation-timing-function: linear, linear;
+      -webkit-animation-iteration-count: infinite, infinite;
+      animation-iteration-count: infinite, infinite
+    }
+
+    @media (max-width:1024px) {
+      .info__title {
+        font-size: 84px;
+        line-height: 84px
+      }
+
+      .info__inner {
+        font-size: 70px
+      }
+    }
+
+    @media (max-width:900px) {
+      .info {
+        padding: 200px 40px
+      }
+
+      .info__text {
+        font-size: 17px;
+        line-height: 26px
+      }
+    }
+
+    @media (max-width:764px) {
+      .info {
+        padding: 150px 40px
+      }
+
+      .info__title {
+        font-size: 60px;
+        line-height: 60px
+      }
+
+      .info__inner {
+        font-size: 55px;
+        letter-spacing: -3px
+      }
+
+      .info__circle {
+        width: 200px
+      }
+    }
+
+    @media (max-width:650px) {
+      .info {
+        padding: 100px 15px
+      }
+
+      .info__title {
+        font-size: 50px;
+        line-height: 45px
+      }
+
+      .info__inner {
+        font-size: 35px;
+        letter-spacing: -2px
+      }
+
+      .info__circle {
+        width: 175px
+      }
+    }
+
+    @-webkit-keyframes circle-rotation {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    @keyframes circle-rotation {
+      0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0)
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+      }
+    }
+
+    @-webkit-keyframes circle-move {
+      0% {
+        top: -61px;
+        left: -52px
+      }
+
+      25% {
+        top: -68px;
+        left: -20px
+      }
+
+      75% {
+        top: -100px;
+        left: -30px
+      }
+
+      100% {
+        top: -61px;
+        left: -52px
+      }
+    }
+
+    @keyframes circle-move {
+      0% {
+        top: -61px;
+        left: -52px
+      }
+
+      25% {
+        top: -68px;
+        left: -20px
+      }
+
+      75% {
+        top: -100px;
+        left: -30px
+      }
+
+      100% {
+        top: -61px;
+        left: -52px
+      }
+    }
+
+    @media(max-width:400px) {
+
+      .main #online .cards__paragraph,
+      .main #stationary .cards__paragraph {
+        max-width: 310px;
+      }
+    }
+
+    @media(max-width:430px) {
+      .main .nav__text:first-child {
+        max-width: 128px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+    <div class="header">
+      <div class="header__placeholder">
+        <img src="assets/bcg-placeholder-desktop.jpg" alt="background" class="header__placeholder-img"
+          id="video-placeholder">
+        <img src="assets/loadIcon.gif" alt="loader" class="header__placeholder-loader">
+      </div>
+      <video class="header__video header__video--js" autoplay loop muted playsinline>
+        <source src="" type="video/mp4" />
+      </video>
+      <div class="header__motto">
+        <img src="assets/paypo.svg" alt="" class="header__title">
+        <p class="header__paragraph">Zamów do domu<br>Zapłać później</p>
+        <a class="header__link" href="">Więcej o PayPo</a>
+      </div>
+      <img src="assets/arrow-mobile.svg" alt="arrow" class="header__arrow">
+      <div class="header__buttons">
+        <img src="assets/pause-btn.svg" alt="icon" class="header__buttons-img">
+      </div>
+    </div>
+
+    <div class="nav">
+      <ul class="nav__list">
+        <li class="nav__item">
+          <a href="#online" class="nav__link first">
+            <span class="nav__text">
+              <img src="assets/icon-2.svg" alt="icon" class="nav__img">
+              W aplikacji i na ccc.eu
+            </span>
+            <div class="nav__bottom-line"></div>
+          </a>
+        </li>
+        <li class="nav__item">
+          <a href="#stationary" class="nav__link middle">
+            <span class="nav__text">
+              <img src="assets/icon-1.svg" alt="icon" class="nav__img">
+              W sklepie stacjonarnym
+            </span>
+            <div class="nav__bottom-line" style="display: none"></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="physical" id="online" name="online">
+      <div class="points">
+        <div class="points__wrapper">
+          <div class="points__inner" id="epoints-img">
+            <img src="assets/pion_2.jpg" alt="" class="points__img">
+          </div>
+          <div class="points__inner" id="epoints">
+            <ul class="points__list">
+              <h2 class="points__title">Zakupy online z PayPo?<br>Nie ma problemu!</h2>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Wybierz produkty i przejdź do koszyka</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Wybierz PayPo jako metodę płatności</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Podaj swoje dane (tylko raz!)</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Zapłać w ciągu 30 dni lub rozłóż na 4 raty!</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Czekaj na paczkę!</p>
+              </li>
+            </ul>
+            <a href="" class="points__link">Sprawdź nowości</a>
+          </div>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="cards__wrapper">
+          <div class="cards__inner">
+            <div class="cards__motto">
+              <div class="cards__special">
+                <h2 class="cards__title">Korzystaj z PayPo podczas zakupów online</h2>
+                <p class="cards__paragraph">
+                  Dodaj produkty do koszyka i wybierz PayPo. Załóż konto, dokończ transakcję i zapłać po 30 dniach!
+                </p>
+              </div>
+              <a href="" onclick="return false" class="cards__link cards__link--epoints">Dowiedz się, jak to działa</a>
+            </div>
+          </div>
+          <div class="cards__inner">
+            <div class="cards__animation">
+              <img class="cards__animation-physical" src="assets/aa.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instructions">
+        <div class="instructions__wrapper">
+          <h2 class="instructions__title"><span class="instructions__inner">Korzyści</span>
+          </h2>
+          <div class="instructions__items">
+            <div class="instructions__item">
+              <img src="assets/image-1.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Pozwól sobie na więcej
+                dzięki płatności PayPo
+              </p>
+            </div>
+            <div class="instructions__item">
+              <img src="assets/image-2.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Kupuj bez ryzyka,
+                bezpieczną metodą
+              </p>
+            </div>
+            <div class="instructions__item">
+              <img src="assets/image-3.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Kup teraz,
+                a zapłać po 30 dniach
+              </p>
+            </div>
+            <div class="instructions__item">
+              <img src="assets/image-4.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Zapłać jednorazowo
+                lub rozłóż płatność na raty
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="howto" id="stationary" name="howto">
+      <div class="points">
+        <div class="points__wrapper">
+          <div class="points__inner" id="points-img">
+            <img src="assets/pion_1.jpg" alt="" class="points__img">
+          </div>
+          <div class="points__inner" id="points">
+            <ul class="points__list">
+              <h2 class="points__title">Kupuj z PayPo w sklepie
+                stacjonarnym korzystając
+                z aplikacji</h2>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Zaloguj się do aplikacji CCC</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Kliknij „zapłać” z PayPo i podaj swoje
+                  dane (tylko raz!)</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Potwierdź zakupy w aplikacji</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Zabierz zakupy do domu</p>
+              </li>
+              <li class="points__item">
+                <img src="assets/circle.svg" alt="" class="points__tick" />
+                <p class="points__text">Zapłać dopiero po 30 dniach!</p>
+              </li>
+            </ul>
+            <a href="" class="points__link">Sprawdź listę sklepów</a>
+          </div>
+        </div>
+      </div>
+      <div class="cards">
+        <div class="cards__wrapper">
+          <div class="cards__inner">
+            <div class="cards__motto">
+              <div class="cards__special">
+                <h2 class="cards__title">Masz aplikację CCC?<br>
+                  Masz PayPo!</h2>
+                <p class="cards__paragraph">
+                  Włącz aplikację, wygeneruj kod PayPo
+                  i podaj go pracownikowi - tak, to naprawdę takie proste
+                </p>
+              </div>
+              <a href="" onclick="return false" class="cards__link cards__link--points">Dowiedz się, jak to działa</a>
+            </div>
+          </div>
+          <div class="cards__inner">
+            <div class="cards__animation">
+              <img class="cards__animation-physical" src="assets/bb.gif" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="instructions">
+        <div class="instructions__wrapper">
+          <h2 class="instructions__title"><span class="instructions__inner">Korzyści</span>
+          </h2>
+          <div class="instructions__items">
+            <div class="instructions__item">
+              <img src="assets/image-1.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Pozwól sobie na więcej
+                dzięki płatności PayPo
+              </p>
+            </div>
+            <div class="instructions__item">
+              <img src="assets/image-2.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Kupuj bez ryzyka,
+                bezpieczną metodą
+              </p>
+            </div>
+            <div class="instructions__item">
+              <img src="assets/image-3.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Kup teraz,
+                a zapłać po 30 dniach
+              </p>
+            </div>
+            <div class="instructions__item">
+              <img src="assets/image-4.svg" alt="" class="instructions__img">
+              <p class="instructions__paragraph">Zapłać jednorazowo
+                lub rozłóż płatność na raty
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <div class="scroll-carousel-with-arrows scroll-carousel-with-arrows--js">
+      <div class="arrows">
+        <div class="arrows__arrow arrows__arrow--left-js">
+          <img class="scroll-carousel-with-arrows__image" src="assets/left-arrow.svg" alt="arrow" />
+        </div>
+        <div class="arrows__arrow arrows__arrow--right-js">
+          <img class="scroll-carousel-with-arrows__image" src="assets/right-arrow.svg" alt="arrow" />
+        </div>
+      </div>
+
+      <div class="
+              scroll-carousel-with-arrows__wrapper
+              scroll-carousel-with-arrows__wrapper--js
+            ">
+        <div class="scroll-carousel-with-arrows__container">
+          <a class="
+                  scroll-carousel-with-arrows__item
+                  scroll-carousel-with-arrows__item--js
+                " onclick="return false" href="#">
+            <img class="scroll-carousel-with-arrows__image img" src="assets/05.jpg" alt="Photo" />
+          </a>
+          <a class="scroll-carousel-with-arrows__item" href="#" onclick="return false">
+            <img class="scroll-carousel-with-arrows__image img" src="assets/02.jpg" alt="Photo" />
+          </a>
+          <a class="scroll-carousel-with-arrows__item" href="#" onclick="return false">
+            <img class="scroll-carousel-with-arrows__image img" src="assets/03.jpg" alt="Photo" />
+          </a>
+          <a class="scroll-carousel-with-arrows__item smallerimg" href="#" onclick="return false">
+            <img class="scroll-carousel-with-arrows__image img" src="assets/04.jpg" alt="Photo" />
+          </a>
+          <a class="scroll-carousel-with-arrows__item" href="#" onclick="return false">
+            <img class="scroll-carousel-with-arrows__image img" src="assets/01.jpg" alt="Photo" />
+          </a>
+          <a class="scroll-carousel-with-arrows__item smallerimg" href="#" onclick="return false">
+            <img class="scroll-carousel-with-arrows__image img" src="assets/06.jpg" alt="Photo" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="info">
+      <div class="info__inner">
+        <h2 class="info__title">
+          To nie jest jednak<br>
+          <span class="info__inner">
+            strzał w dziesiątkę?
+            <img src="assets/circle-purple.svg" alt="circle" class="info__circle">
+          </span>
+        </h2>
+        <p class="info__text">
+          Produkty kupione z PayPo możesz zwrócić tak samo wygodnie – kurierem lub w dowolnym sklepie CCC
+        </p>
+      </div>
+    </div>
+    <div class="wrap-footer">
+      <div class="footer">
+        <h2 class="footer__title">Skontaktuj się</h2>
+        <div class="footer__container">
+          <div class="footer__inner">
+            <p class="footer__text1">+42 21 44 222<br />801 002 222</p>
+            <div class="footer__wrap">
+              <p class="footer__text2">Poniedziałek - piątek: 09:00 - 20:00
+                <br>
+                Sobota: 09:00 - 17:00
+              </p>
+              <a href="tel:{801 002 222}" class="footer__link">Zadzwoń do nas</a>
+            </div>
+          </div>
+          <div class="footer__inner">
+            <p class="footer__text1">info.pl@ccc.eu</p>
+            <div class="footer__wrap">
+              <p class="footer__text2">Na większość pytań<br>
+                odpowiadamy w ciągu 48h</p>
+              <a href="https://ccc.eu/pl/kontakt" class="footer__link white">Napisz do nas</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    (function () {
+
+      var videoTag = document.querySelector('.header__video--js'),
+        videoSourceTag = document.querySelector('.header__video--js source'),
+        desktopVideoSrc = "video/video-1920x108056a410ae.mp4",
+        mobileVideoSrc = "video/video-764x76465db223d.mp4",
+        tabletMediaQuery = 764,
+        firstNavLink = document.querySelector('.nav__link.first'),
+        videoButtonArea = document.querySelector('.header__buttons'),
+        videoButton = document.querySelector('.header__buttons-img');
+      firstNavLink.click();
+      setTimeout(function () {
+        window.scrollTo(0, 0);
+      }, 50)
+
+
+      function setVideoSource() {
+        var windowWidth = window.innerWidth,
+          videoSource = videoSourceTag.getAttribute('src');
+
+        if (windowWidth > tabletMediaQuery && videoSource !== desktopVideoSrc) {
+
+          videoSourceTag.setAttribute('src', desktopVideoSrc);
+          videoTag.load();
+
+
+        }
+        if (windowWidth <= tabletMediaQuery && videoSource !== mobileVideoSrc) {
+
+          videoSourceTag.setAttribute('src', mobileVideoSrc);
+          videoTag.load();
+
+
+        }
+      }
+
+      window.addEventListener('load', function () {
+
+        setVideoSource();
+
+
+      });
+      window.addEventListener('resize', setVideoSource);
+
+      videoButtonArea.addEventListener("click", function () {
+        if (videoTag.paused) {
+          videoTag.play();
+          videoButton.setAttribute('src', "assets/pause-btn.svg");
+        } else {
+          videoTag.pause();
+          videoButton.setAttribute('src', "assets/play-btn.svg");
+        }
+      })
+
+
+
+
+
+      var menuLinks = [...document.querySelectorAll('.nav__link')];
+      menuLinks.forEach(addBottomLine);
+
+      function addBottomLine(menuLink) {
+        menuLink.addEventListener('click', function () {
+
+          for (let i = 0; i < menuLinks.length; i++) {
+            var linkLastChild = menuLinks[i].lastElementChild
+            linkLastChild.style.display = 'none'
+          }
+          this.lastElementChild.style.display = 'block'
+
+
+        })
+      }
+
+      var faqQuestions = [...document.querySelectorAll('.faq__question')];
+      faqQuestions.forEach(openTab)
+
+      function openTab(faqQuestion) {
+        faqQuestion.addEventListener('click', function () {
+          var choosenFaqAnswer = this.lastElementChild
+          choosenFaqAnswer.classList.toggle('visible')
+          var choosenFaqButton = this.children[1].lastElementChild;
+          choosenFaqButton.classList.toggle('open')
+        })
+      }
+
+      var scrollCarousel = document.querySelectorAll('.scroll-carousel-with-arrows--js');
+      var carousel = document.querySelector('.scroll-carousel-with-arrows__wrapper--js');
+
+
+
+      var scroll = (item) => {
+        var leftArrow = item.querySelector('.arrows__arrow--left-js');
+        var rightArrow = item.querySelector('.arrows__arrow--right-js');
+        var carousel = item.querySelector('.scroll-carousel-with-arrows__wrapper--js');
+
+
+
+        var scrollRight = () => {
+          var carouselItem = document.querySelector('.scroll-carousel-with-arrows__item--js');
+          var galleryContainer = document.querySelector('.scroll-carousel-with-arrows__container');
+          var scrollDistance = carouselItem.offsetWidth;
+          carousel.scrollBy(scrollDistance, 0);
+          if (carousel.scrollLeft + carousel.offsetWidth >= galleryContainer.offsetWidth) {
+            galleryIsScrolled = true
+            carousel.scrollLeft = 0;
+          }
+
+
+        };
+
+        var scrollLeft = () => {
+          var carouselItem = document.querySelector('.scroll-carousel-with-arrows__item--js');
+          var scrollDistance = carouselItem.offsetWidth;
+          carousel.scrollBy(-scrollDistance, 0);
+
+        };
+
+        leftArrow.addEventListener('click', scrollLeft);
+        rightArrow.addEventListener('click', scrollRight);
+      };
+
+      scrollCarousel.forEach((item) => {
+        scroll(item);
+      });
+
+
+
+      var HeaderBtnBottom = document.querySelector('.header__arrow');
+      HeaderBtnBottom.addEventListener('click', function () {
+        document.querySelector('.nav__link.first').click();
+      })
+
+      var mainLp = document.querySelector('.main');
+
+
+
+      var firstLink = document.querySelector('.nav__link.first');
+      var middleLink = document.querySelector('.nav__link.middle');
+
+
+      firstLink.addEventListener('click', function () {
+        var menuMobile = document.querySelector('.nav');
+        menuMobile.scrollLeft = 0;
+
+      })
+
+
+
+      middleLink.addEventListener('click', function () {
+        var menuMobile = document.querySelector('.nav');
+        var menuList = document.querySelector('.nav__list');
+        var menuLength = menuList.offsetWidth;
+        menuMobile.scrollLeft = 1000;
+      })
+
+      var imagesSlider = [...document.querySelectorAll('.scroll-carousel-with-arrows__image.img')];
+
+      imagesSlider.forEach(imageSlider => {
+        imageSlider.addEventListener('click', function () {
+          var carousel = document.querySelector('.scroll-carousel-with-arrows__wrapper--js');
+          var galleryContainer = document.querySelector('.scroll-carousel-with-arrows__container');
+          var carouselItem = document.querySelector('.scroll-carousel-with-arrows__item--js');
+          var scrollDistance = carouselItem.offsetWidth;
+          carousel.scrollBy(scrollDistance, 0);
+          if (carousel.scrollLeft + carousel.offsetWidth >= galleryContainer.offsetWidth && galleryIsScrolled === true) {
+            carousel.scrollLeft = 0;
+            galleryIsScrolled = false;
+
+          }
+        })
+      })
+      var galleryIsScrolled = false
+      carousel.addEventListener('scroll', function (e) {
+        var carousel = document.querySelector('.scroll-carousel-with-arrows__wrapper--js');
+        var galleryContainer = document.querySelector('.scroll-carousel-with-arrows__container');
+        if (carousel.scrollLeft + carousel.offsetWidth >= galleryContainer.offsetWidth) {
+          galleryIsScrolled = true
+        }
+      })
+
+      const epointsLink = document.querySelector(".cards__link--epoints");
+      const pointsLink = document.querySelector(".cards__link--points");
+
+      epointsLink.addEventListener("click", function () {
+        const windowWidth = window.innerWidth;
+        const tabletMediaQuery = 764;
+
+        const epointsSection = document.getElementById("epoints");
+        const epointsSectionImg = document.getElementById("epoints-img");
+        const epointsSectionToTop = window.pageYOffset + epointsSection.getBoundingClientRect().top;
+        const epointsSectionImgToTop = window.pageYOffset + epointsSectionImg.getBoundingClientRect().top;
+        const scrollDistance = windowWidth > tabletMediaQuery ? epointsSectionImgToTop - 50 : epointsSectionToTop
+        window.scrollTo(0, scrollDistance);
+      })
+
+      pointsLink.addEventListener("click", function () {
+        const windowWidth = window.innerWidth;
+        const tabletMediaQuery = 764;
+
+        const pointsSection = document.getElementById("points");
+        const pointsSectionImg = document.getElementById("points-img");
+        const pointsSectionToTop = window.pageYOffset + pointsSection.getBoundingClientRect().top;
+        const pointsSectionImgToTop = window.pageYOffset + pointsSectionImg.getBoundingClientRect().top;
+        const scrollDistance = windowWidth > tabletMediaQuery ? pointsSectionImgToTop - 50 : pointsSectionToTop
+        window.scrollTo(0, scrollDistance);
+      })
+    })();
+
+  </script>
+
+</body>
+
+</html>
